@@ -1,0 +1,45 @@
+SELECT DISTINCT
+    idt_geo,
+    geo,
+    CASE
+        WHEN geo = 'EL' THEN 'Greece'
+        WHEN geo = 'ES' THEN 'Spain'
+        WHEN geo = 'IT' THEN 'Italy'
+        WHEN geo = 'NL' THEN 'Netherlands'
+        WHEN geo = 'PT' THEN 'Portugal'
+        WHEN geo = 'UK' THEN 'United Kingdom'
+        WHEN geo = 'FR' THEN 'France'
+        WHEN geo = 'CH' THEN 'Switzerland'
+        WHEN geo = 'CZ' THEN 'Czechia'
+        WHEN geo = 'EA20' THEN 'EA20'
+        WHEN geo = 'EU27_2020' THEN 'EU27'
+        WHEN geo = 'TR' THEN 'Turkey'
+        WHEN geo = 'RO' THEN 'Romania'
+        WHEN geo = 'PL' THEN 'Poland'
+        WHEN geo = 'BE' THEN 'Belgium'
+        WHEN geo = 'DE' THEN 'Germany'
+        WHEN geo = 'FI' THEN 'Finland'
+        WHEN geo = 'NO' THEN 'Norway'
+        WHEN geo = 'RS' THEN 'Serbia'
+        WHEN geo = 'CY' THEN 'Cyprus'
+        WHEN geo = 'SE' THEN 'Sweden'
+        WHEN geo = 'SK' THEN 'Slovakia'
+        WHEN geo = 'HR' THEN 'Croatia'
+        WHEN geo = 'HU' THEN 'Hungary'
+        WHEN geo = 'LT' THEN 'Lithuania'
+        WHEN geo = 'AT' THEN 'Austria'
+        WHEN geo = 'BG' THEN 'Belgium'
+        WHEN geo = 'LU' THEN 'Luxembourg'
+        WHEN geo = 'LV' THEN 'Latvia'
+        WHEN geo = 'MK' THEN 'North Macedonia'
+        WHEN geo = 'MT' THEN 'Malta'
+        WHEN geo = 'SI' THEN 'Slovenia'
+        WHEN geo = 'DK' THEN 'Denmark'
+        WHEN geo = 'IE' THEN 'Ireland'
+        WHEN geo = 'EE' THEN 'Estonia'
+        WHEN geo = 'IS' THEN 'Iceland'
+        WHEN geo = 'ME' THEN 'Montenegro'
+        ELSE NULL
+    END AS country
+FROM
+    {{ref('raw_import_erurostat_selfemployment')}}

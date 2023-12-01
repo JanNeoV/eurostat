@@ -1,7 +1,8 @@
--- ### IMPORT EUROSTAT ###
-WITH
-    -- union education, industry, occupation
-    UNION_TABLES AS (
+--### import eurostat ### WITH --
+UNION
+    education,
+    industry,
+    occupation union_tables AS (
         SELECT
             age,
             geo,
@@ -13,7 +14,7 @@ WITH
             'education' AS category
         FROM
             eurostat_stag.self_employment_by_education_raw
-        UNION All
+        UNION ALL
         SELECT
             age,
             geo,
@@ -25,7 +26,7 @@ WITH
             'occupation' AS category
         FROM
             eurostat_stag.self_employment_by_occupation_raw
-        UNION All
+        UNION ALL
         SELECT
             age,
             geo,
@@ -37,21 +38,20 @@ WITH
             'industry' AS category
         FROM
             eurostat_stag.self_employment_by_industry_raw
-    ),
-    -- add kpi_label
-    ADD_KPI_LABEL AS (
+    ),--
+ADD
+    kpi_label add_kpi_label AS (
         SELECT
             *,
             CASE
-            -- education
-                WHEN kpi = 'TOTAL' THEN 'All ISCED 2011 levels'
+                -- education
+                WHEN kpi = 'TOTAL' THEN 'All ISCED 2011 levels' -- Total gilt für alle Katagorien
                 WHEN kpi = 'ED0-2' THEN 'Less than primary, primary and lower secondary education (levels 0-2)'
                 WHEN kpi = 'ED3_4' THEN 'Upper secondary and post-secondary non-tertiary education (levels 3 and 4)'
                 WHEN kpi = 'ED3_4GEN' THEN 'Upper secondary and post-secondary non-tertiary education (levels 3 and 4) - general'
                 WHEN kpi = 'ED3_4VOC' THEN 'Upper secondary and post-secondary non-tertiary education (levels 3 and 4) - vocational'
                 WHEN kpi = 'ED5-8' THEN 'Tertiary education (levels 5-8)'
-                WHEN kpi = 'NRP' THEN 'No response'
-                -- industry
+                WHEN kpi = 'NRP' THEN 'No response' -- industry
                 WHEN kpi = 'A' THEN 'Agriculture, forestry and fishing'
                 WHEN kpi = 'B' THEN 'Mining and quarrying'
                 WHEN kpi = 'C' THEN 'Manufacturing'
@@ -73,8 +73,7 @@ WITH
                 WHEN kpi = 'S' THEN 'Other service activities'
                 WHEN kpi = 'T' THEN 'Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use'
                 WHEN kpi = 'U' THEN 'Activities of extraterritorial organisations and bodies'
-                WHEN kpi = 'NRP' THEN 'No response'
-                -- occupation
+                WHEN kpi = 'NRP' THEN 'No response' -- occupation
                 WHEN kpi = 'OC1' THEN 'Managers'
                 WHEN kpi = 'OC2' THEN 'Professionals'
                 WHEN kpi = 'OC3' THEN 'Technicians and associate professionals'
@@ -88,48 +87,56 @@ WITH
                 ELSE NULL
             END AS kpi_label
         FROM
-            UNION_TABLES
-    ),
-    -- translate kpi_value from x1000 to real amount
-    TRANSLATE_KPI AS (
+            union_tables
+    ),-- TRANSLATE kpi_value
+FROM
+    x1000 TO REAL amount translate_kpi AS (
         SELECT
             *,
             kpi_value * 1000 AS headcount
         FROM
-            ADD_KPI_LABEL
-    ),
-    -- add idt-columns: DENSE_RANK() is used instead of ROW_NUMBER(). It assigns a rank starting from 1 to each unique value, and the same rank is assigned to identical values. The ORDER BY clause in DENSE_RANK() ensures that the IDs are assigned based on the order of values.
-    TABLE_WITH_KEYS AS (
+            add_kpi_label
+    ),--
+ADD
+    idt - COLUMNS: DENSE_RANK() IS used instead OF ROW_NUMBER().it assigns A RANK starting
+FROM
+    1 TO each UNIQUE VALUE,
+    AND THE same RANK IS assigned TO identical
+VALUES.THE
+ORDER BY
+    clause IN DENSE_RANK() ensures that THE ids are assigned based
+    ON THE ORDER OF
+VALUES.table_with_keys AS (
         SELECT
             *,
-            DENSE_RANK() OVER (
+            DENSE_RANK() over (
                 ORDER BY
                     age
             ) AS idt_age,
-            DENSE_RANK() OVER (
+            DENSE_RANK() over (
                 ORDER BY
                     geo
             ) AS idt_geo,
-            DENSE_RANK() OVER (
+            DENSE_RANK() over (
                 ORDER BY
                     sex
             ) AS idt_sex,
-            DENSE_RANK() OVER (
+            DENSE_RANK() over (
                 ORDER BY
                     wstatus
             ) AS idt_status,
-            DENSE_RANK() OVER (
+            DENSE_RANK() over (
                 ORDER BY
                     kpi
             ) AS idt_kpi,
-            DENSE_RANK() OVER (
+            DENSE_RANK() over (
                 ORDER BY
                     category
             ) AS idt_category
         FROM
-            TRANSLATE_KPI
+            translate_kpi
     )
 SELECT
     *
 FROM
-    TABLE_WITH_KEYS
+    table_with_keys

@@ -1,8 +1,8 @@
---### import eurostat ### WITH --
-UNION
-    education,
-    industry,
-    occupation union_tables AS (
+-- Active: 1701547949079@@127.0.0.1@5432@Antigone
+--### import eurostat ### 
+WITH 
+--UNION education, industry, occupation 
+union_tables AS (
         SELECT
             age,
             geo,
@@ -38,9 +38,10 @@ UNION
             'industry' AS category
         FROM
             eurostat_stag.self_employment_by_industry_raw
-    ),--
-ADD
-    kpi_label add_kpi_label AS (
+    ),
+    
+    -- ADD kpi_label 
+    add_kpi_label AS (
         SELECT
             *,
             CASE
@@ -51,7 +52,8 @@ ADD
                 WHEN kpi = 'ED3_4GEN' THEN 'Upper secondary and post-secondary non-tertiary education (levels 3 and 4) - general'
                 WHEN kpi = 'ED3_4VOC' THEN 'Upper secondary and post-secondary non-tertiary education (levels 3 and 4) - vocational'
                 WHEN kpi = 'ED5-8' THEN 'Tertiary education (levels 5-8)'
-                WHEN kpi = 'NRP' THEN 'No response' -- industry
+                WHEN kpi = 'NRP' THEN 'No response' 
+                -- industry
                 WHEN kpi = 'A' THEN 'Agriculture, forestry and fishing'
                 WHEN kpi = 'B' THEN 'Mining and quarrying'
                 WHEN kpi = 'C' THEN 'Manufacturing'
@@ -88,55 +90,36 @@ ADD
             END AS kpi_label
         FROM
             union_tables
-    ),-- TRANSLATE kpi_value
-FROM
-    x1000 TO REAL amount translate_kpi AS (
+    ),
+    
+-- TRANSLATE kpi_value FROM x1000 TO REAL amount
+    translate_kpi AS (
         SELECT
             *,
             kpi_value * 1000 AS headcount
         FROM
             add_kpi_label
-    ),--
-ADD
-    idt - COLUMNS: DENSE_RANK() IS used instead OF ROW_NUMBER().it assigns A RANK starting
-FROM
-    1 TO each UNIQUE VALUE,
-    AND THE same RANK IS assigned TO identical
-VALUES.THE
-ORDER BY
-    clause IN DENSE_RANK() ensures that THE ids are assigned based
-    ON THE ORDER OF
-VALUES.table_with_keys AS (
-        SELECT
-            *,
-            DENSE_RANK() over (
-                ORDER BY
-                    age
-            ) AS idt_age,
-            DENSE_RANK() over (
-                ORDER BY
-                    geo
-            ) AS idt_geo,
-            DENSE_RANK() over (
-                ORDER BY
-                    sex
-            ) AS idt_sex,
-            DENSE_RANK() over (
-                ORDER BY
-                    wstatus
-            ) AS idt_status,
-            DENSE_RANK() over (
-                ORDER BY
-                    kpi
-            ) AS idt_kpi,
-            DENSE_RANK() over (
-                ORDER BY
-                    category
-            ) AS idt_category
-        FROM
-            translate_kpi
-    )
+    ),
+    
+    -- ADD idt - COLUMNS: DENSE_RANK() IS used instead OF ROW_NUMBER().it assigns A RANK starting FROM 1 TO each UNIQUE VALUE, AND THE same RANK IS assigned TO identical VALUES. THE ORDER BY clause IN DENSE_RANK() ensures that THE ids are assigned based ON THE ORDER OF VALUES.
+
+
+
+table_with_keys AS (
+    SELECT
+        *,
+            DENSE_RANK() OVER (ORDER BY age) AS idt_age,
+            DENSE_RANK() OVER (ORDER BY geo) AS idt_geo,
+            DENSE_RANK() OVER (ORDER BY sex) AS idt_sex,
+            DENSE_RANK() OVER (ORDER BY wstatus) AS idt_status,
+            DENSE_RANK() OVER (ORDER BY kpi) AS idt_kpi,
+            DENSE_RANK() OVER (ORDER BY category) AS idt_category
+    FROM
+        translate_kpi
+)
+
 SELECT
     *
 FROM
     table_with_keys
+

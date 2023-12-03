@@ -1,0 +1,11 @@
+ismene:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: JanIstDoof
+      dbname: Antigone
+      schema: eurostat_stag
+      port: 5432

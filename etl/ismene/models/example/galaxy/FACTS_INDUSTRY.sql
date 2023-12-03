@@ -24,4 +24,4 @@ FROM source_data WHERE category = 'industry' GROUP BY  sex,
     employment_status,
     time_period_date
     UNION ALL SELECT * FROM {{ref('HELP_INDUSTRY_AGE_25_49')}} )
-    SELECT * FROM raw
+    SELECT * FROM raw WHERE age in ('Y15-24', 'Y25-49', 'Y50-74')

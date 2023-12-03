@@ -1,0 +1,14 @@
+SELECT
+    *
+FROM
+    {{ ref('FACTS_EDUCATION') }}
+UNION ALL
+SELECT
+    *
+FROM
+    {{ ref('FACTS_INDUSTRY') }}
+UNION ALL
+SELECT
+    *
+FROM
+    {{ ref('FACTS_OCCUPATION') }}

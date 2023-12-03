@@ -64,4 +64,4 @@ occupation_comb AS (
 SELECT
     *
 FROM
-    occupation_comb
+    occupation_comb WHERE industry_label IS NOT NULL AND occupation_label IS NOT NULL AND education_label IS NOT NULL  

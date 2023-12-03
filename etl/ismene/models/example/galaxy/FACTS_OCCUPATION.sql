@@ -1,11 +1,3 @@
-WITH source_data AS (
-    SELECT
-        *,
-
-        TO_DATE(time_period, 'YYYY-"Q"Q') as time_period_date
-    FROM  {{ref('raw_analysis')}} 
-)
-
 SELECT
     sex,
     age,
@@ -14,6 +6,5 @@ SELECT
     headcount,
     category,
     kpi_label,
-    employment_status,
-    time_period_date
-FROM source_data WHERE category = 'occupation'
+    employment_status
+FROM {{ref('raw_analysis')}}  WHERE category = 'occupation' AND age in ('Y15-24', 'Y25-49', 'Y50-74')

@@ -4,8 +4,8 @@ ismene:
     dev:
       type: postgres
       host: localhost
-      user: postgres
-      password: JanIstDoof
+      user: believer
+      password: fickdich
       dbname: Antigone
       schema: eurostat_stag
       port: 5432

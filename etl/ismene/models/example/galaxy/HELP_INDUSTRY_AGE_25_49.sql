@@ -83,6 +83,7 @@ FROM
     total_join
 GROUP BY
     sex,
+    
     age,
     country,
     category,

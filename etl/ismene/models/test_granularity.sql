@@ -2,7 +2,8 @@ WITH source_data AS (
     SELECT
         DISTINCT age
     FROM
-        {{ ref('raw_analysis') }}
+        {{ ref('raw_analysis') }} 
+
 ),
 industry_prep AS (
     SELECT
@@ -12,6 +13,7 @@ industry_prep AS (
         {{ ref('raw_analysis') }}
     WHERE
         category = 'industry'
+
 ),
 education_prep AS (
     SELECT
@@ -21,6 +23,7 @@ education_prep AS (
         {{ ref('raw_analysis') }}
     WHERE
         category = 'education'
+
 ),
 occupation_prep AS (
     SELECT
@@ -30,6 +33,7 @@ occupation_prep AS (
         {{ ref('raw_analysis') }}
     WHERE
         category = 'occupation'
+
 ),
 industry_comb AS (
     SELECT
@@ -64,4 +68,5 @@ occupation_comb AS (
 SELECT
     *
 FROM
-    occupation_comb WHERE industry_label IS NOT NULL AND occupation_label IS NOT NULL AND education_label IS NOT NULL  
+    occupation_comb
+    -- WHERE industry_label IS NOT NULL AND occupation_label IS NOT NULL AND education_label IS NOT NULL  

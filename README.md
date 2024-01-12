@@ -93,6 +93,8 @@ To simplify, we divide the data into tables based on granularity:
 
 
 #### Data Model
+
+
 ```mermaid
 graph TD;
     DIM_NATIONAL_ACCOUNTS-->FACT_TOTALS;

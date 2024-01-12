@@ -93,7 +93,16 @@ To simplify, we divide the data into tables based on granularity:
 
 
 #### Data Model
-...
+```mermaid
+graph TD;
+    DIM_NATIONAL_ACCOUNTS->Expense-Revenue-Fact-Table;
+    DIM_NATIONAL_ACCOUNTS-->Expense-Fact-Table;
+    DIM_NATIONAL_ACCOUNTS-->Revenue-Fact-Table;
+    DIM_DATE-->Expense-Revenue-Fact-Table;
+    DIM_DATE-->Expense-Fact-Table;
+    DIM_DATE-->Revenue-Fact-Table;
+
+```
 
 #### Findings
 ...

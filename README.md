@@ -95,15 +95,17 @@ To simplify, we divide the data into tables based on granularity:
 #### Data Model
 ```mermaid
 graph TD;
-    DIM_NATIONAL_ACCOUNTS->Expense-Revenue-Fact-Table;
-    DIM_NATIONAL_ACCOUNTS-->Expense-Fact-Table;
-    DIM_NATIONAL_ACCOUNTS-->Revenue-Fact-Table;
-    DIM_DATE-->Expense-Revenue-Fact-Table;
-    DIM_DATE-->Expense-Fact-Table;
-    DIM_DATE-->Revenue-Fact-Table;
+    DIM_NATIONAL_ACCOUNTS-->FACT_TOTALS;
+    DIM_NATIONAL_ACCOUNTS-->FACT_EXPENSE;
+    DIM_NATIONAL_ACCOUNTS-->FACT_REVENUE;
+    DIM_DATE-->FACT_TOTALS;
+    DIM_DATE-->FACT_EXPENSE;
+    DIM_DATE-->FACT_REVENUE;
+    DIM_COUNTRY-->FACT_TOTALS;
+    DIM_COUNTRY-->FACT_EXPENSE;
+    DIM_COUNTRY-->FACT_REVENUE;
 
 ```
-
 #### Findings
 ...
 

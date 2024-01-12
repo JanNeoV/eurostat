@@ -7,6 +7,7 @@ Welcome to our collaborative project space where **Charlotte** and **Jan** build
 ## 📊 Case Studies
 
 Explore our diverse case studies, each offering unique insights and implications.
+This is still a work in progress!
 
 
 

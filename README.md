@@ -1,32 +1,70 @@
-# Eurostat Self-Employment Analysis
+# Charlotte and Jan's Power BI Projects
 
-This project provides an in-depth analysis of self-employment trends within the European Union, focusing on variations by sex and age. The analysis leverages data from Eurostat and presents findings through a Power BI dashboard.
+## 🌟 Introduction
 
-## Power BI Dashboard
+Welcome to our collaborative project space where **Charlotte** and **Jan** build insightful **Power BI Dashboards**. Our journey begins with extracting publicly available data, primarily from **Eurostat** and other reliable sources. Utilizing a custom **Python API**, we efficiently upload this data into our **PostgreSQL database**. The heart of our work lies in constructing a robust datamart, facilitated by **dbt**, to power our Power BI visualizations.
 
-[Power BI Dashboard](https://link-to-your-powerbi-dashboard) - Click here to view the interactive dashboard visualizing the self-employment trends in the EU.
+## 📊 Case Studies
 
-## Project Overview
+Explore our diverse case studies, each offering unique insights and implications.
 
-### Current Situation of Self-Employment in the EU
 
-The self-employment landscape in the European Union is diverse, reflecting various economic, cultural, and social influences. This project aims to shed light on these dynamics by analyzing data on self-employed individuals, categorizing it by sex and age. Our analysis provides insights into:
 
-- The proportion of self-employed individuals among the working population.
-- Gender disparities in self-employment.
-- Age-related trends and their implications for the EU labor market.
+### 💼 Government Expenses
 
-### Data Source
+#### Overview
+Examining how government spending patterns vary across different sectors and regions in the EU.
 
-The data used in this analysis is sourced from Eurostat, the statistical office of the European Union.
+#### Data Model
+...
 
-## Getting Started
+#### Findings
+...
 
-To explore the data and analysis, you can view the Power BI dashboard or delve into the datasets and scripts provided in this repository.
+#### Conclusion
+...
 
-### Repository Structure
+[🔗 View Government Expenses Report](https://app.powerbi.com/view?r=eyJrIjoiZjU2Y2VjZDktNmUyNC00NjFiLWFkNzYtYmE1YTU0NmY1MGQ1IiwidCI6IjI5ODAzN2JlLTdhZDgtNGM4My04MGYzLTRmMDQ1NGEwY2ZjZCJ9)
 
-- `Power BI/`: Contains the Power BI reports and datasets used for visualization.
-- `etl/`: Includes the ETL scripts, dbt project for data transformation, and a detailed README on setting up and using dbt.
+### 👥 Demographics
 
-For more details on each component, refer to the README within the respective directories.
+#### Overview
+A comprehensive examination of demographic shifts and trends within the European Union.
+
+#### Data Model
+...
+
+#### Findings
+...
+
+#### Conclusion
+...
+
+[🔗 View Demographics Report](https://link-to-demographics-report)
+
+### 💔 Divorce Rate
+
+#### Overview
+Studying the changing patterns of divorce rates across the EU, and the underlying factors.
+
+#### Data Model
+...
+
+#### Findings
+...
+
+#### Conclusion
+...
+
+[🔗 View Divorce Rate Report](https://link-to-divorce-rate-report)
+
+## 🚀 Getting Started
+
+To delve into our data and analysis, explore the Power BI dashboards linked above. The datasets and scripts used in these studies are also available in this repository.
+
+### 📁 Repository Structure
+
+- `Power BI/`: Contains Power BI reports and datasets for each case study.
+- `etl/`: Hosts ETL scripts, dbt project for data transformation, and README for setup and usage instructions.
+
+For further details on each component, refer to the README files within the respective directories.

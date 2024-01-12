@@ -39,7 +39,22 @@ Here's an example table illustrating the initial dataset structure:
 
 | Value | National Accounts Indicator (ESA 2010) | Category |
 |-------|---------------------------------------|----------|
-| ...   | ...                                   | ...      |
+| 1    | Expense| Total |
+| 2     | Revenue        | Total|
+| 3| Net Borrowing/Lending       | Total|
+| 1    | Compensation of employees, payable| Expense |
+| 2     | Subsidies, payable        | Expense |
+| 3| Interest, payable     | Expense |
+| 1    | Social benefits other than social transfers in kind and social transfers in kind ? purchased market production, payable| Expense |
+| 2     | Capital transfers, payable        | Expense |
+| 3| Gross capital formation and acquisitions less disposals of non-financial non-produced assets     | Expense |
+| 3| Intermediate consumption    | Expense |
+| 1    | Taxes on production and imports, receivable| Revenue |
+| 2     | Current taxes on income, wealth, etc., receivable    | Revenue |
+| 3| Net social contributions, receivable    | Revenue|
+| 1    | Capital taxes, receivable| Revenue|
+| 2     | Other capital transfers and investment grants, receivable     |Revenue |
+| 3| Market output, output for own final use and payments for non-market output   | Revenue||
 
 *Note: The table is truncated for brevity. Please refer to the source for complete data.*
 
@@ -49,17 +64,30 @@ To simplify, we divide the data into tables based on granularity:
 ##### Expense-Revenue-Fact-Table
 | Value | National Accounts Indicator (ESA 2010) | Category |
 |-------|---------------------------------------|----------|
-| ...   | ...                                   | ...      |
+| 1    | Expense| Total |
+| 2     | Revenue        | Total |
+| 3| Net Borrowing/Lending       | Total
 
 ##### Expense-Fact-Table
 | Value | National Accounts Indicator (ESA 2010) | Category |
 |-------|---------------------------------------|----------|
-| ...   | ...                                   | ...      |
+| 1    | Compensation of employees, payable| Expense |
+| 2     | Subsidies, payable        | Expense |
+| 3| Interest, payable     | Expense |
+| 1    | Social benefits other than social transfers in kind and social transfers in kind ? purchased market production, payable| Expense |
+| 2     | Capital transfers, payable        | Expense |
+| 3| Gross capital formation and acquisitions less disposals of non-financial non-produced assets     | Expense |
+| 3| Intermediate consumption    | Expense |
 
 ##### Revenue-Fact-Table
 | Value | National Accounts Indicator (ESA 2010) | Category |
 |-------|---------------------------------------|----------|
-| ...   | ...                                   | ...      |
+| 1    | Taxes on production and imports, receivable| Revenue |
+| 2     | Current taxes on income, wealth, etc., receivable    | Revenue |
+| 3| Net social contributions, receivable    | Revenue|
+| 1    | Capital taxes, receivable| Revenue|
+| 2     | Other capital transfers and investment grants, receivable     |Revenue |
+| 3| Market output, output for own final use and payments for non-market output   | Revenue|
 
 *Tables are illustrative and truncated for simplicity.*
 

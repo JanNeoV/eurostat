@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: combined_self_employment_data
+    description: "Core model combining self-employment data across education, industry, and occupation."
+    schema: Core  # This ensures the table is materialized in the 'Core' schema
+    columns:
+      - name: idt_age
+        description: "Identifier for the age dimension."
+      - name: idt_geo
+        description: "Identifier for the geographic dimension."
+      - name: idt_sex
+        description: "Identifier for the sex dimension."
+      - name: idt_status
+        description: "Identifier for the work status dimension."
+      - name: idt_kpi
+        description: "Identifier for the key performance indicator (education, industry, occupation)."
+      - name: idt_category
+        description: "Identifier for the category of the KPI (education, industry, occupation)."
+      - name: headcount
+        description: "The number of self-employed individuals, translated from original KPI values."
+      - name: kpi
+        description: "The KPI (e.g., education level, industry code, occupation code)."
+      - name: category
+        description: "The category of the KPI (education, industry, occupation)."
+      - name: kpi_label
+        description: "Human-readable label for the KPI."

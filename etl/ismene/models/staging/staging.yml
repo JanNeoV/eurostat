@@ -1,26 +1,26 @@
 version: 2
 
-models:
-  - name: self_employment_by_education
-    description: "Staging model for self_employment_by_education_raw with a surrogate key."
-    columns:
-      - name: id
-        description: "Surrogate key generated from age, freq, geo, isced11, sex, unit, wstatus, and time_period."
-
-  - name: government_finances
-    description: "Staging model for gov_10a_main_table with a surrogate key."
-    columns:
-      - name: id
-        description: "Surrogate key generated from freq, geo, na_item, sector, unit, and time_period."
-
-  - name: self_employment_by_sex_industry
-    description: "Staging model for self_employment_by_industry_raw with a surrogate key."
-    columns:
-      - name: id
-        description: "Surrogate key generated from age, freq, geo, nace_r2, sex, unit, wstatus, and time_period."
-
-  - name: self_employment_by_sex_occupation_age
-    description: "Staging model for self_employment_by_occupation_raw with a surrogate key."
-    columns:
-      - name: id
-        description: "Surrogate key generated from age, freq, geo, isco08, sex, unit, wstatus, and time_period."
+sources:
+  - name: Staging
+    schema: Staging
+    tables:
+      - name: self_employment_by_education
+        description: "Staging model for self_employment_by_education_raw with a surrogate key."
+        columns:
+          - name: id
+            description: "Surrogate key generated from age, freq, geo, isced11, sex, unit, wstatus, and time_period."
+      - name: government_finances
+        description: "Staging model for gov_10a_main_table with a surrogate key."
+        columns:
+          - name: id
+            description: "Surrogate key generated from freq, geo, na_item, sector, unit, and time_period."
+      - name: self_employment_by_sex_industry
+        description: "Staging model for self_employment_by_industry_raw with a surrogate key."
+        columns:
+          - name: id
+            description: "Surrogate key generated from age, freq, geo, nace_r2, sex, unit, wstatus, and time_period."
+      - name: self_employment_by_sex_occupation_age
+        description: "Staging model for self_employment_by_occupation_raw with a surrogate key."
+        columns:
+          - name: id
+            description: "Surrogate key generated from age, freq, geo, isco08, sex, unit, wstatus, and time_period."

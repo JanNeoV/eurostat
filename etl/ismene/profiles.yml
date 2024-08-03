@@ -7,8 +7,8 @@ ismene:
       user: believer
       password: ~T;^n=:/>O\A64HGEYq,
       dbname: Antigone
-      schema: "public" 
+      schema: "public"  # Fallback schema
       port: 5432
       threads: 4
       keepalives_idle: 0
-      search_path: 'Staging, Core, Mart'
+      search_path: 'Staging,Core,Mart'

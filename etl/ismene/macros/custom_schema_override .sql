@@ -1,7 +1,12 @@
-{% macro custom_schema_override() %}
+{% macro custom_schema_macro() %}
     {% if target.name == 'dev' %}
-        {{ return(target.schema) }}
+        {# Example logic to return schema based on directory name #}
+        {% if var('schema_name_override', none) %}
+            {{ return(var('schema_name_override')) }}
+        {% else %}
+            {{ return(target.schema) }}
+        {% endif %}
     {% else %}
-        {{ return('public') }}  {# or some other default schema #}
+        {{ return(target.schema) }}
     {% endif %}
 {% endmacro %}

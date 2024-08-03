@@ -1,8 +1,6 @@
 {{ config(
-    schema='Staging',
     materialized='table'
 ) }}
-
 with source as (
     select *
     from {{ source('Source', 'self_employment_by_education_raw') }}

@@ -28,7 +28,7 @@ union_tables AS (
             isco08 AS kpi,
             'occupation' AS category
         FROM
-            {{ref('self_employment_by_sex_industry')}}
+            {{ref('self_employment_by_sex_occupation_age')}}
         UNION ALL
         SELECT
             age,
@@ -40,7 +40,7 @@ union_tables AS (
             nace_r2 AS kpi,
             'industry' AS category
         FROM
-            {{ref('self_employment_by_sex_occupation_age')}}
+            {{ref('self_employment_by_sex_industry')}}
     ),
     
     -- ADD kpi_label 

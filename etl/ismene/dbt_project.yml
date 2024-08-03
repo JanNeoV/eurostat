@@ -17,14 +17,15 @@ clean-targets:
 
 models:
   ismene:
-    +schema: "{{ custom_schema_override() }}"
     staging:
-      +schema: 'Staging'
+      +schema: "{{ custom_schema_macro() }}"
+      vars:
+        schema_name_override: 'Staging'
     core:
-      +schema: 'Core'
+      +schema: "{{ custom_schema_macro() }}"
+      vars:
+        schema_name_override: 'Core'
     mart:
-      +schema: 'Mart'
-
-packages:
-  - package: dbt-labs/dbt_utils
-    version: [">=0.8.0", "<0.9.0"]
+      +schema: "{{ custom_schema_macro() }}"
+      vars:
+        schema_name_override: 'Mart'

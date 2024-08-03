@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: Source
+    schema: Source
+    tables:
+      - name: self_employment_by_education_raw
+      - name: self_employment_by_industry_raw
+      - name: self_employment_by_occupation_raw
+      - name: gov_10a_main_table

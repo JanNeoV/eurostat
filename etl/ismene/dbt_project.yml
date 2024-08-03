@@ -5,27 +5,20 @@ config-version: 2
 profile: 'ismene'
 
 model-paths: ["models"]
-analysis-paths: ["analyses"]
-test-paths: ["tests"]
-seed-paths: ["seeds"]
 macro-paths: ["macros"]
-snapshot-paths: ["snapshots"]
 
-clean-targets:
-  - "target"
-  - "dbt_packages"
+seeds:
+  ismene:
+    kpi_labels:
+      +schema: Source  # Or whichever schema you'd like to place this in
+
 
 models:
   ismene:
-    staging:
-      +schema: "{{ custom_schema_macro() }}"
-      vars:
-        schema_name_override: 'Staging'
-    core:
-      +schema: "{{ custom_schema_macro() }}"
-      vars:
-        schema_name_override: 'Core'
-    mart:
-      +schema: "{{ custom_schema_macro() }}"
-      vars:
-        schema_name_override: 'Mart'
+    Core:
+      +schema: "Core"
+    Staging:
+      +schema: "Staging"
+    Mart:
+      +schema: "Mart"
+

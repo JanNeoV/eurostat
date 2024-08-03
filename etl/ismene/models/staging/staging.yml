@@ -24,3 +24,5 @@ sources:
         columns:
           - name: id
             description: "Surrogate key generated from age, freq, geo, isco08, sex, unit, wstatus, and time_period."
+  - name: kpi_labels_mapping
+    description: "blubb"

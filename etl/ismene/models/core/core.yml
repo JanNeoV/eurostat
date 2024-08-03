@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: combined_self_employment_data
+  - name: employment_union
     description: "Core model combining self-employment data across education, industry, and occupation."
     schema: Core  # This ensures the table is materialized in the 'Core' schema
     columns:

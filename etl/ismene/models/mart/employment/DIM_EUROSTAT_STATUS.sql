@@ -8,4 +8,4 @@ SELECT
     ELSE NULL END AS status_label
 
     
-     FROM {{ref('raw_import_erurostat_selfemployment')}}
+     FROM {{ref('employment_union')}}

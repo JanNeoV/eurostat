@@ -1,5 +1,8 @@
--- Active: 1701547949079@@127.0.0.1@5432@Antigone
---### import eurostat ### 
+{{ config(
+    schema='core',
+    materialized='table'
+) }}
+
 WITH 
 --UNION education, industry, occupation 
 union_tables AS (
@@ -13,7 +16,7 @@ union_tables AS (
             isced11 AS kpi,
             'education' AS category
         FROM
-            eurostat_stag.self_employment_by_education_raw
+            {{ref('self_employment_by_education')}}
         UNION ALL
         SELECT
             age,
@@ -25,7 +28,7 @@ union_tables AS (
             isco08 AS kpi,
             'occupation' AS category
         FROM
-            eurostat_stag.self_employment_by_occupation_raw
+            {{ref('self_employment_by_sex_industry')}}
         UNION ALL
         SELECT
             age,
@@ -37,7 +40,7 @@ union_tables AS (
             nace_r2 AS kpi,
             'industry' AS category
         FROM
-            eurostat_stag.self_employment_by_industry_raw
+            {{ref('self_employment_by_sex_occupation_age')}}
     ),
     
     -- ADD kpi_label 

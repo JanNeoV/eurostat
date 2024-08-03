@@ -9,4 +9,4 @@ SELECT
     kpi_value,
     headcount
 FROM
-    {{ref('raw_import_erurostat_selfemployment')}}
+    {{ref('employment_union')}}

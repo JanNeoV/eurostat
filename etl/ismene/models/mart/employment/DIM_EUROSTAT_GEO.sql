@@ -42,4 +42,4 @@ SELECT DISTINCT
         ELSE NULL
     END AS country
 FROM
-    {{ref('raw_import_erurostat_selfemployment')}}
+    {{ref('employment_union')}}

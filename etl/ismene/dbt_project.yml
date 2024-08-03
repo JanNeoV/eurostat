@@ -9,8 +9,16 @@ macro-paths: ["macros"]
 
 seeds:
   ismene:
-    kpi_labels:
-      +schema: Source  # Or whichever schema you'd like to place this in
+    employment_mapping_reference:
+      +schema: Staging
+    geo_country_mapping:
+      +schema: Staging
+    national_accounts_indicator:
+      +schema: Staging
+    government_sectors:
+      +schema: Staging
+    national_accounts_indicator_expenses:
+      +schema: Staging
 
 
 models:

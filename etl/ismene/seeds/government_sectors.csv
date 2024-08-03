@@ -1,0 +1,8 @@
+sector,sector_mapping
+S1,TOTAL economy
+S13,GENERAL GOVERNMENT
+S1311,Central government
+S1312,State government
+S1313,Local government
+S1314,Social security funds
+S212,Institutions of the EU

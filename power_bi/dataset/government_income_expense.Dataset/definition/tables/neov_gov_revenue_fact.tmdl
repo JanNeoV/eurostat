@@ -1,0 +1,59 @@
+table neov_gov_revenue_fact
+	lineageTag: 86f4cc97-9dde-4c74-8db1-928e6bf48016
+
+	column geo
+		dataType: string
+		lineageTag: f3c01d2c-ac7e-47c8-a83f-99e6e0eb47f1
+		summarizeBy: none
+		sourceColumn: geo
+
+		annotation SummarizationSetBy = Automatic
+
+	column na_item
+		dataType: string
+		lineageTag: 6d3978d0-38c6-485c-8042-7183501c6755
+		summarizeBy: none
+		sourceColumn: na_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_period
+		dataType: int64
+		formatString: 0
+		lineageTag: 175be50f-0025-4a31-814a-4a1473ef8243
+		summarizeBy: none
+		sourceColumn: time_period
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 10d7f609-d54f-49f3-8e92-db396451ca45
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit
+		dataType: string
+		lineageTag: fa3a2929-f400-4748-80b4-8ef4179d8e48
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition neov_gov_revenue_fact = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("127.0.0.1", "Antigone"),
+				    eurostat_stag_government_revenue_fact = Source{[Schema="eurostat_stag",Item="government_revenue_fact"]}[Data]
+				in
+				    eurostat_stag_government_revenue_fact
+
+	annotation PBI_ResultType = Table
+

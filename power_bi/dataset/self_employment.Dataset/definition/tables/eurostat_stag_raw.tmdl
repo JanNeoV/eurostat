@@ -1,0 +1,82 @@
+table eurostat_stag_raw
+	lineageTag: a901e15c-33e2-4385-8396-ee2da5b4b63e
+
+	column sex
+		dataType: string
+		lineageTag: 7de24178-16e0-4e0e-badb-ed0d83f54eaf
+		summarizeBy: none
+		sourceColumn: sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: string
+		lineageTag: 55f75ebf-de8a-433e-b98f-a2e01452c181
+		summarizeBy: none
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 6d6444bf-26c9-442f-bc38-977b2784de3a
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_period
+		dataType: string
+		lineageTag: 29e1b4f9-f7d0-441d-a05c-c71c83e4974a
+		summarizeBy: none
+		sourceColumn: time_period
+
+		annotation SummarizationSetBy = Automatic
+
+	column headcount
+		dataType: double
+		lineageTag: e09a3ad8-9feb-4144-82c2-f0eaea69d603
+		summarizeBy: sum
+		sourceColumn: headcount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column category
+		dataType: string
+		lineageTag: 5b3d885b-de47-4b8e-b61a-16a0e04ad8c4
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column kpi_label
+		dataType: string
+		lineageTag: f7e1aff5-14ff-4001-a66c-b2a724ba5375
+		summarizeBy: none
+		sourceColumn: kpi_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column employment_status
+		dataType: string
+		lineageTag: a74b111b-19a1-49d7-a3ff-44f7ae14b481
+		summarizeBy: none
+		sourceColumn: employment_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition eurostat_stag_raw = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database("127.0.0.1", "Antigone"),
+				    eurostat_stag_one_big_tabel_raw = Quelle{[Schema="eurostat_stag",Item="one_big_tabel_raw"]}[Data]
+				in
+				    eurostat_stag_one_big_tabel_raw
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

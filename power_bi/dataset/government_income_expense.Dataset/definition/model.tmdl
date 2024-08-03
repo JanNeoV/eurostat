@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["neov_gov_income_outcome_fact","neov_gov_revenue_fact","neov_dim_date","neov_gov_na_item_dim","neov_gov_expense_fact","neov_gov_geo_dim"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.126.1261.0 (24.02)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table neov_gov_income_outcome_fact
+ref table DateTableTemplate_05104994-e997-415e-9e83-4d3f7150826f
+ref table neov_gov_revenue_fact
+ref table neov_dim_date
+ref table neov_gov_na_item_dim
+ref table neov_gov_expense_fact
+ref table neov_gov_geo_dim
+

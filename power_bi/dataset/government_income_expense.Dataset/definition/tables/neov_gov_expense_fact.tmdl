@@ -1,0 +1,59 @@
+table neov_gov_expense_fact
+	lineageTag: 655626b4-8f1a-489a-8717-d26e49dddce4
+
+	column geo
+		dataType: string
+		lineageTag: f32b9f95-d5b7-482d-b132-e2ae5ebdfb2e
+		summarizeBy: none
+		sourceColumn: geo
+
+		annotation SummarizationSetBy = Automatic
+
+	column na_item
+		dataType: string
+		lineageTag: e638ac7a-9e02-46df-8092-5326238b02f5
+		summarizeBy: none
+		sourceColumn: na_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_period
+		dataType: int64
+		formatString: 0
+		lineageTag: a90687b6-d346-4317-a2e7-98f768ffaf32
+		summarizeBy: none
+		sourceColumn: time_period
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 1e1d3b2a-828f-4ea1-bb22-2f2aff83d897
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit
+		dataType: string
+		lineageTag: 6b6d2d48-4e3f-4f70-b7ca-f3ccef227ca3
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition neov_gov_expense_fact = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("127.0.0.1", "Antigone"),
+				    eurostat_stag_government_expenditure_fact = Source{[Schema="eurostat_stag",Item="government_expenditure_fact"]}[Data]
+				in
+				    eurostat_stag_government_expenditure_fact
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,36 @@
+relationship 6cc85794-1e18-46cd-b6b2-613590f1747b
+	fromColumn: neov_gov_revenue_fact.na_item
+	toColumn: neov_gov_na_item_dim.na_item
+
+relationship b6e2d067-e645-4cbc-b284-7b5b20d8e0de
+	fromColumn: neov_gov_expense_fact.na_item
+	toColumn: neov_gov_na_item_dim.na_item
+
+relationship 63f124be-b7ae-49bc-ba3b-dd617bcb99e1
+	fromColumn: neov_gov_revenue_fact.geo
+	toColumn: neov_gov_geo_dim.geo
+
+relationship 567536c3-c6b8-4f6e-bfcc-8c323fe2c434
+	fromColumn: neov_gov_expense_fact.geo
+	toColumn: neov_gov_geo_dim.geo
+
+relationship 508fb2d3-2da3-4266-867d-67bd2db40407
+	fromColumn: neov_gov_revenue_fact.time_period
+	toColumn: neov_dim_date.year_value
+
+relationship ee9a3961-3123-471d-855c-014067973aee
+	fromColumn: neov_gov_expense_fact.time_period
+	toColumn: neov_dim_date.year_value
+
+relationship 4baa514a-1fb9-41f5-8e35-80a0575474fb
+	fromColumn: neov_gov_income_outcome_fact.geo
+	toColumn: neov_gov_geo_dim.geo
+
+relationship d86f85d6-7ba2-459c-ad53-2e259f71598b
+	fromColumn: neov_gov_income_outcome_fact.na_item
+	toColumn: neov_gov_na_item_dim.na_item
+
+relationship 3e45088d-6382-4030-a49d-2bfa57be4a7d
+	fromColumn: neov_gov_income_outcome_fact.time_period
+	toColumn: neov_dim_date.year_value
+

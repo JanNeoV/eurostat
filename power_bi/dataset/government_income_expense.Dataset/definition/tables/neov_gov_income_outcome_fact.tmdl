@@ -1,0 +1,91 @@
+table neov_gov_income_outcome_fact
+	lineageTag: ac718808-bab2-4b65-a924-9cbd7c9e05b7
+
+	measure income_outcome_mio_eur = CALCULATE(SUM(neov_gov_income_outcome_fact[value]), neov_gov_income_outcome_fact[unit]= "MIO_EUR", neov_dim_date[year_value]= MAX(neov_dim_date[year_value]))
+		lineageTag: 9511b920-0e39-488d-b339-e92f88c8f65b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure income_outcome_pc_gdp = CALCULATE(SUM(neov_gov_income_outcome_fact[value]), neov_gov_income_outcome_fact[unit]= "PC_GDP", neov_gov_income_outcome_fact[time_period] = MAX(neov_dim_date[year_value]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 095f62d5-2cde-4fd4-bca4-dc6cd0c15662
+
+	measure int_pct =
+			
+			SWITCH (
+			    SELECTEDVALUE ( neov_gov_income_outcome_fact[unit] ),
+			    "MIO_EUR", [income_outcome_mio_eur],
+			    "PC_GDP", [income_outcome_pc_gdp]
+			)
+		lineageTag: 508edf82-3fd0-4d36-8615-a5b8d0d5764e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure income_outcome_mio_eur_py = CALCULATE(SUM(neov_gov_income_outcome_fact[value]),  neov_gov_income_outcome_fact[unit]= "MIO_EUR", neov_dim_date[year_value]= MAX(neov_dim_date[year_value]) -1 )
+		lineageTag: 29635643-95ec-472a-b558-9d676d55ae52
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'State with highest absolut expenditure' =
+			
+			MAXX(
+			    TOPN(1,
+			        SUMMARIZE(neov_gov_geo_dim,neov_gov_geo_dim[country], "highest price", [int_pct]), [int_pct]),neov_gov_geo_dim[country])
+		lineageTag: 1a7493f3-a815-4237-8f29-7e5540590126
+
+	column na_item
+		dataType: string
+		lineageTag: cb4ecee0-f975-4394-bcba-81ad068134fb
+		summarizeBy: none
+		sourceColumn: na_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column geo
+		dataType: string
+		lineageTag: 12e5bac0-f527-4834-8790-a0f08c61cef0
+		summarizeBy: none
+		sourceColumn: geo
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_period
+		dataType: int64
+		formatString: 0
+		lineageTag: 059082e2-b5a0-4daf-a925-3dad8b723551
+		summarizeBy: none
+		sourceColumn: time_period
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 8df5ed24-198b-495b-8d5a-80d7c484c47f
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit
+		dataType: string
+		lineageTag: 180d3d76-9384-4ffe-a5d5-dc436a3f6b1d
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition neov_gov_income_outcome_fact = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("127.0.0.1", "Antigone"),
+				    eurostat_stag_government_revenue_expenditure_facts = Source{[Schema="eurostat_stag",Item="government_revenue_expenditure_facts"]}[Data]
+				in
+				    eurostat_stag_government_revenue_expenditure_facts
+
+	annotation PBI_ResultType = Table
+

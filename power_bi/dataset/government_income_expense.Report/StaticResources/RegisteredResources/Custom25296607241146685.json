@@ -1,0 +1,36 @@
+{
+  "name": "Custom",
+  "textClasses": {
+    "label": {
+      "color": "#707070"
+    }
+  },
+  "dataColors": [
+    "#003776",
+    "#004494",
+    "#4073AF",
+    "#7FA1C9",
+    "#BFD0E4",
+    "#744EC2",
+    "#FBC11D",
+    "#FFD617"
+  ],
+  "foreground": "#707070",
+  "foregroundNeutralSecondary": "#9F9F9F",
+  "backgroundLight": "#CFCFCF",
+  "foregroundNeutralTertiary": "#E3E3E3",
+  "bad": "#DA2131",
+  "neutral": "#F29527",
+  "good": "#467A39",
+  "visualStyles": {
+    "page": {
+      "*": {
+        "background": [
+          {
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

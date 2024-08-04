@@ -25,20 +25,20 @@ category_filter AS (
 
 filtered_facts AS (
     -- CTE to join the fact table with the filtered dimension tables
-    SELECT
-        total_employed.*
+    SELECT total_employed.*
     FROM
-        {{ ref('facts_employment') }} total_employed
+        {{ ref('fact_employment') }} AS total_employed
     INNER JOIN
-        age_filter af
+        age_filter AS af
         ON total_employed.fk_age = af.pk_age
     INNER JOIN
-        category_filter cf
-        ON total_employed.fk_professional_background = cf.pk_professional_background
+        category_filter AS cf
+        ON
+            total_employed.fk_professional_background
+            = cf.pk_professional_background
 )
 
 -- Final select to retrieve the filtered fact table
-SELECT
-    *
+SELECT *
 FROM
     filtered_facts

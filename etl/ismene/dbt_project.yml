@@ -10,15 +10,15 @@ macro-paths: ["macros"]
 seeds:
   ismene:
     employment_mapping_reference:
-      +schema: Staging
+      +schema: Source
     geo_country_mapping:
-      +schema: Staging
+      +schema: Source
     national_accounts_indicator:
-      +schema: Staging
+      +schema: Source
     government_sectors:
-      +schema: Staging
+      +schema: Source
     national_accounts_indicator_expenses:
-      +schema: Staging
+      +schema: Source
 
 
 models:

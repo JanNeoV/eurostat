@@ -4,8 +4,12 @@
 ) }}
 
 SELECT
-    label as professional_background
-    , category
-    , {{ generate_dim_surrogate_key_integer(['token']) }} AS pk_professional_background
+    label AS professional_background,
+    category
+    ,
+
+    
+        
+        {{ generate_dim_surrogate_key_integer(['token']) }} AS pk_professional_background
 FROM
     {{ ref('professional_background') }}

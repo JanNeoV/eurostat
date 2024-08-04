@@ -1,0 +1,55 @@
+WITH BASE AS (
+    SELECT * FROM {{ ref('government_finances') }}
+    WHERE UNIT = 'MIO_EUR' AND GEO = 'DE' AND TIME_PERIOD = 2015
+),
+
+TOTAL AS (
+    SELECT
+        'total' AS INDICATOR,
+        NA_ITEM,
+        SECTOR AS BLUBB,
+        SUM(OBS_VALUE) AS VALUE
+    FROM BASE GROUP BY NA_ITEM, SECTOR
+
+)
+,
+PARTS AS (
+    SELECT DISTINCT NA_ITEM
+    FROM BASE
+    ORDER BY NA_ITEM ASC
+)
+
+SELECT SUM(VALUE) FROM TOTAL WHERE
+    NA_ITEM IN (
+        'D2REC',
+        'D5REC',
+        'D91REC',
+        'D61REC',
+        'D4REC',
+        'D7REC',
+        'D39REC',
+        'D92_D99REC',
+        'P11_P12_P131'
+
+
+    ) AND BLUBB = 'S13'
+
+/*
+SELECT SUM(VALUE) FROM TOTAL WHERE na_item IN ('P2'
+,'D1PAY'
+,'D41PAY'
+,'D3PAY'
+,'D62_D632PAY'
+,'D29PAY'
+,'D5PAY'
+,'D42PAY'
+,'D43PAY'
+,'D44PAY'
+,'D45PAY'
+,'D7PAY'
+,'D8'
+,'D9PAY'
+,'OP5ANP'
+) AND blubb = 'S13'
+--UNION ALL
+--SELECT * FROM PARTS */

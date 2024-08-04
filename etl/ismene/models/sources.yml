@@ -8,3 +8,7 @@ sources:
       - name: self_employment_by_industry_raw
       - name: self_employment_by_occupation_raw
       - name: gov_10a_main_table
+      - name: employment_mapping_reference
+      - name: geo_country_mapping
+      - name: government_sectors
+      - name: national_accounts_indicator

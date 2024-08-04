@@ -41,4 +41,5 @@ WITH union_tables AS (
     FROM
         {{ source('Source', 'self_employment_by_industry_raw') }}
 )
+
 SELECT * FROM union_tables

@@ -1,0 +1,72 @@
+table neov_gov_fct_expense
+	lineageTag: 655626b4-8f1a-489a-8717-d26e49dddce4
+
+	column value
+		dataType: double
+		lineageTag: 1e1d3b2a-828f-4ea1-bb22-2f2aff83d897
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fk_national_accounts
+		dataType: int64
+		formatString: 0
+		lineageTag: d0ad2a3a-aab0-4d8e-a359-447fbf043b5b
+		summarizeBy: none
+		sourceColumn: fk_national_accounts
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_country
+		dataType: int64
+		formatString: 0
+		lineageTag: 9873b5d7-6786-40db-9675-a597c41a286f
+		summarizeBy: none
+		sourceColumn: fk_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_gov_sector
+		dataType: int64
+		formatString: 0
+		lineageTag: 15c63183-546e-4d00-9cc6-ea2bbc5ba39c
+		summarizeBy: sum
+		sourceColumn: fk_gov_sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_unit
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b1438b0-4974-41ca-95be-085f1ffb6045
+		summarizeBy: none
+		sourceColumn: fk_unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 404ff96a-bb1e-4722-a479-d7bae56b6359
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition neov_gov_fct_expense = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("127.0.0.1", "Antigone"),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Schema] = "Mart")),
+				    Mart_fact_government_expense = #"Filtered Rows"{[Schema="Mart",Item="fact_government_expense"]}[Data]
+				in
+				    Mart_fact_government_expense
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

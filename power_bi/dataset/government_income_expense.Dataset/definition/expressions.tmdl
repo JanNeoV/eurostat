@@ -1,0 +1,12 @@
+expression mapping_in_out =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("jc0xCsMwDAXQu2j2Ilm24zHUWVNhuoRgcv9bNKWU5mvKYND7SP77Tq9OgZr05UEj/JiQldHZWZEFGav7TY5WMTPmw1jOF/mbLp9U/nNjm7cL1Tki89mRo9wIpaKT63Hr6opUnd19QU6XGYuflubVaIw3", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [level_1 = _t, level_2 = _t]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"level_1", type text}, {"level_2", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 0466a2a7-6f5a-4af0-bdab-1e9d356e6763
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.0.0/schema.json",
+  "name": "ReportSection3db1c5e555896b8f2cee",
+  "displayName": "⚖️ Total Overview",
+  "displayOption": "FitToPage",
+  "height": 936,
+  "width": 1644,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'guillaume-perigois-0NRkVddA2fw-unsplash.jpg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "guillaume-perigois-0NRkVddA2fw026878940633771498.jpg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "93848c5e1cf40904884f",
+      "target": "aa44f7bf2251da970a5c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e42fde5f275b6f7f159c",
+      "target": "7a239c5143721eb626da",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e1cf59659e78989514ec",
+      "target": "6d0c3567ff56b81c9001",
+      "type": "DataFilter"
+    },
+    {
+      "source": "e1cf59659e78989514ec",
+      "target": "93848c5e1cf40904884f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e42fde5f275b6f7f159c",
+      "target": "8cc802dc673a4270443a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "e1cf59659e78989514ec",
+      "target": "6cdd576a12df64d36dae",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e1cf59659e78989514ec",
+      "target": "8cc802dc673a4270443a",
+      "type": "NoFilter"
+    }
+  ]
+}

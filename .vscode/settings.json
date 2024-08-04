@@ -1,3 +1,5 @@
 {
-    "dbt.queryLimit": 500
+    "dbt.queryLimit": 500,
+    "turntable.dbtVersion": "1.8",
+    "turntable.warehouse": "postgres"
 }

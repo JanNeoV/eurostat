@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 416.63901345625118,
-            "y": 58
+            "y": 60
           },
           "nodeIndex": "neov_dim_date",
           "nodeLineageTag": "2e332786-ebe2-4a0e-8c4e-f18e74f28c22",
@@ -23,68 +23,79 @@
         },
         {
           "location": {
-            "x": 513.56392817671849,
-            "y": 496.96315339065092
-          },
-          "nodeIndex": "neov_gov_expense_fact",
-          "nodeLineageTag": "655626b4-8f1a-489a-8717-d26e49dddce4",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
-          "zIndex": 2
-        },
-        {
-          "location": {
-            "x": 59.534801374379924,
-            "y": 16.73459157614252
-          },
-          "nodeIndex": "neov_gov_geo_dim",
-          "nodeLineageTag": "664e9490-04e5-4e70-8972-1d0351d4bcc0",
-          "size": {
-            "height": 140,
-            "width": 218
-          },
-          "zIndex": 3
-        },
-        {
-          "location": {
             "x": 22,
-            "y": 485
+            "y": 487
           },
-          "nodeIndex": "neov_gov_income_outcome_fact",
+          "nodeIndex": "neov_gov_fct_total",
           "nodeLineageTag": "ac718808-bab2-4b65-a924-9cbd7c9e05b7",
           "size": {
-            "height": 202,
+            "height": 419,
             "width": 332
           },
-          "zIndex": 7
-        },
-        {
-          "location": {
-            "x": 808.85824771262878,
-            "y": 4
-          },
-          "nodeIndex": "neov_gov_na_item_dim",
-          "nodeLineageTag": "a676dee2-5a23-464a-9505-2e0c21582983",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 4
+          "zIndex": 0
         },
         {
           "location": {
             "x": 865.63901345625118,
-            "y": 478.56734833690649
+            "y": 480.56734833690649
           },
-          "nodeIndex": "neov_gov_revenue_fact",
-          "nodeLineageTag": "86f4cc97-9dde-4c74-8db1-928e6bf48016",
+          "nodeIndex": "neov_gov_fct_revenue",
           "size": {
             "height": 176,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 407.56392817671849,
+            "y": 352.96315339065092
+          },
+          "nodeIndex": "neov_gov_fct_expense",
+          "nodeLineageTag": "655626b4-8f1a-489a-8717-d26e49dddce4",
+          "size": {
+            "height": 286,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1971,
+            "y": 217
+          },
+          "nodeIndex": "neov_dim_na_item",
+          "nodeLineageTag": "a676dee2-5a23-464a-9505-2e0c21582983",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 59.534801374379924,
+            "y": 18.73459157614252
+          },
+          "nodeIndex": "neov_dim_geo",
+          "size": {
+            "height": 140,
+            "width": 218
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2349,
+            "y": 477
+          },
+          "nodeIndex": "neov_dim_unit",
+          "nodeLineageTag": "20ecf184-1059-4705-a9b8-eaa7fc8be805",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

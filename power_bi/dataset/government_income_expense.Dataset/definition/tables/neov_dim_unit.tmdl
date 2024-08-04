@@ -1,0 +1,34 @@
+table neov_dim_unit
+	lineageTag: 20ecf184-1059-4705-a9b8-eaa7fc8be805
+
+	column unit
+		dataType: string
+		lineageTag: c1bf7af4-3f60-4643-8709-3f362bce9d67
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column pk_unit
+		dataType: int64
+		formatString: 0
+		lineageTag: f41c7421-b93f-4bc4-b9d2-b00d57f6a1e1
+		summarizeBy: none
+		sourceColumn: pk_unit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition neov_dim_unit = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("127.0.0.1", "Antigone"),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Schema] = "Core")),
+				    Core_dim_units = #"Filtered Rows"{[Schema="Core",Item="dim_units"]}[Data]
+				in
+				    Core_dim_units
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

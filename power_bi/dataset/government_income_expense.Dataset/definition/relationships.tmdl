@@ -1,36 +1,53 @@
-relationship 6cc85794-1e18-46cd-b6b2-613590f1747b
-	fromColumn: neov_gov_revenue_fact.na_item
-	toColumn: neov_gov_na_item_dim.na_item
+relationship aaf41901-65b3-4825-897d-764c20821b81
+	joinOnDateBehavior: datePartOnly
+	fromColumn: neov_dim_date.date_key
+	toColumn: LocalDateTable_80e4f0fd-1c15-46e9-8e6b-26f1e4ecfc70.Date
 
-relationship b6e2d067-e645-4cbc-b284-7b5b20d8e0de
-	fromColumn: neov_gov_expense_fact.na_item
-	toColumn: neov_gov_na_item_dim.na_item
+relationship AutoDetected_59ea61de-38be-4b71-af41-d90b1e5d1e9c
+	fromColumn: neov_gov_fct_total.fk_national_accounts
+	toColumn: neov_dim_na_item.pk_national_accounts
 
-relationship 63f124be-b7ae-49bc-ba3b-dd617bcb99e1
-	fromColumn: neov_gov_revenue_fact.geo
-	toColumn: neov_gov_geo_dim.geo
+relationship AutoDetected_d7b62ccc-92fb-4788-b140-6d9504427ad6
+	fromColumn: neov_gov_fct_revenue.fk_national_accounts
+	toColumn: neov_dim_na_item.pk_national_accounts
 
-relationship 567536c3-c6b8-4f6e-bfcc-8c323fe2c434
-	fromColumn: neov_gov_expense_fact.geo
-	toColumn: neov_gov_geo_dim.geo
+relationship AutoDetected_fd6ce6f8-a4f0-4a31-82d2-f7d9aa3c5870
+	fromColumn: neov_gov_fct_expense.fk_national_accounts
+	toColumn: neov_dim_na_item.pk_national_accounts
 
-relationship 508fb2d3-2da3-4266-867d-67bd2db40407
-	fromColumn: neov_gov_revenue_fact.time_period
-	toColumn: neov_dim_date.year_value
+relationship AutoDetected_6550aec2-21cd-4780-9d69-9da738e11596
+	fromColumn: neov_gov_fct_total.fk_unit
+	toColumn: neov_dim_unit.pk_unit
 
-relationship ee9a3961-3123-471d-855c-014067973aee
-	fromColumn: neov_gov_expense_fact.time_period
-	toColumn: neov_dim_date.year_value
+relationship AutoDetected_47d839cf-118e-4384-85ad-8746ba795297
+	fromColumn: neov_gov_fct_revenue.fk_unit
+	toColumn: neov_dim_unit.pk_unit
 
-relationship 4baa514a-1fb9-41f5-8e35-80a0575474fb
-	fromColumn: neov_gov_income_outcome_fact.geo
-	toColumn: neov_gov_geo_dim.geo
+relationship AutoDetected_ea2f9acb-a977-4b66-a2d2-f259a41ee643
+	fromColumn: neov_gov_fct_expense.fk_unit
+	toColumn: neov_dim_unit.pk_unit
 
-relationship d86f85d6-7ba2-459c-ad53-2e259f71598b
-	fromColumn: neov_gov_income_outcome_fact.na_item
-	toColumn: neov_gov_na_item_dim.na_item
+relationship 40923231-3228-086b-5b38-dbae17253a97
+	fromColumn: neov_gov_fct_expense.year
+	toColumn: neov_dim_date.year
 
-relationship 3e45088d-6382-4030-a49d-2bfa57be4a7d
-	fromColumn: neov_gov_income_outcome_fact.time_period
-	toColumn: neov_dim_date.year_value
+relationship 3e1f4fbf-10b3-46a1-a5fb-0647534ed095
+	fromColumn: neov_gov_fct_revenue.year
+	toColumn: neov_dim_date.year
+
+relationship 613b2780-bd33-0d4f-cf63-50ce94ee6953
+	fromColumn: neov_gov_fct_total.year
+	toColumn: neov_dim_date.year
+
+relationship 18b2c100-040c-a4dd-4209-21b6d76bdd79
+	fromColumn: neov_gov_fct_expense.fk_country
+	toColumn: neov_dim_geo.pk_country
+
+relationship ee0954a6-882a-a579-756f-95bf4cabc5da
+	fromColumn: neov_gov_fct_revenue.fk_country
+	toColumn: neov_dim_geo.geo
+
+relationship d0d256dd-9722-e026-5f5f-270ba2d52ff8
+	fromColumn: neov_gov_fct_total.fk_country
+	toColumn: neov_dim_geo.pk_country
 

@@ -5,23 +5,45 @@ table neov_dim_date
 		formatString: 0
 		lineageTag: 2eae39fb-6c31-49bf-8d84-82fdc5f94df6
 
-	column year_value
-		dataType: int64
+	column year
+		dataType: double
 		formatString: 0
-		lineageTag: 5449e198-d2c5-44af-8a17-1f27ba8db77f
+		lineageTag: 08ce7f14-ca11-4ce5-87a0-80bf2272e8b1
 		summarizeBy: none
-		sourceColumn: year_value
+		sourceColumn: year
 
 		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 01b3a6d8-c9e4-44b4-b4cc-0ce18ddea73b
+		summarizeBy: none
+		sourceColumn: date_key
+
+		variation Variation
+			isDefault
+			relationship: aaf41901-65b3-4825-897d-764c20821b81
+			defaultHierarchy: LocalDateTable_80e4f0fd-1c15-46e9-8e6b-26f1e4ecfc70.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	partition neov_dim_date = m
 		mode: import
 		source =
 				let
 				    Source = PostgreSQL.Database("127.0.0.1", "Antigone"),
-				    eurostat_stag_date_table_dim = Source{[Schema="eurostat_stag",Item="date_table_dim"]}[Data]
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Schema] = "Core")),
+				    Core_dim_date = #"Filtered Rows"{[Schema="Core",Item="dim_date"]}[Data],
+				    #"Reordered Columns" = Table.ReorderColumns(Core_dim_date,{"date_key", "year", "day", "month", "month_name", "quarter", "week", "week_name", "day_of_year", "is_weekend"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Reordered Columns",{"year", "date_key"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"year"})
 				in
-				    eurostat_stag_date_table_dim
+				    #"Removed Duplicates"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

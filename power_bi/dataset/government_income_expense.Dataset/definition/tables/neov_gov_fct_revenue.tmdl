@@ -1,0 +1,72 @@
+table neov_gov_fct_revenue
+	lineageTag: 86f4cc97-9dde-4c74-8db1-928e6bf48016
+
+	column value
+		dataType: double
+		lineageTag: 10d7f609-d54f-49f3-8e92-db396451ca45
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fk_national_accounts
+		dataType: int64
+		formatString: 0
+		lineageTag: 360e8ab7-d0d2-48c3-96ce-8f50de259659
+		summarizeBy: none
+		sourceColumn: fk_national_accounts
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_country
+		dataType: int64
+		formatString: 0
+		lineageTag: 957cbc51-0357-4223-81d4-29a5f2ea04ca
+		summarizeBy: none
+		sourceColumn: fk_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_gov_sector
+		dataType: int64
+		formatString: 0
+		lineageTag: 85993275-8bae-4dd6-afab-e398187a30a8
+		summarizeBy: sum
+		sourceColumn: fk_gov_sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_unit
+		dataType: int64
+		formatString: 0
+		lineageTag: 79606c3f-5429-46b1-94d4-3140138bc954
+		summarizeBy: none
+		sourceColumn: fk_unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a468c9a-c8d7-4bcd-9425-f8418fe52e4b
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition neov_gov_fct_revenue = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("127.0.0.1", "Antigone"),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Schema] = "Mart")),
+				    Mart_fact_government_revenue = #"Filtered Rows"{[Schema="Mart",Item="fact_government_revenue"]}[Data]
+				in
+				    Mart_fact_government_revenue
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

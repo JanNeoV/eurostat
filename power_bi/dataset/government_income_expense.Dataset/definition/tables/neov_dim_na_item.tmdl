@@ -1,0 +1,55 @@
+table neov_dim_na_item
+	lineageTag: a676dee2-5a23-464a-9505-2e0c21582983
+
+	column na_item
+		dataType: string
+		lineageTag: 56ee550f-c910-4b3c-b612-bd0ffeb4374c
+		summarizeBy: none
+		sourceColumn: na_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column label
+		dataType: string
+		lineageTag: ea994d52-3924-45c6-8a7a-fb9268c510f6
+		summarizeBy: none
+		sourceColumn: label
+
+		annotation SummarizationSetBy = Automatic
+
+	column pk_national_accounts
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d79b591-ea48-41e6-b76b-8166735bed51
+		summarizeBy: none
+		sourceColumn: pk_national_accounts
+
+		annotation SummarizationSetBy = Automatic
+
+	column in_out
+		dataType: string
+		lineageTag: d19127c6-08a4-469f-9b39-ea48399e4541
+		summarizeBy: none
+		sourceColumn: in_out
+
+		annotation SummarizationSetBy = Automatic
+
+	partition neov_dim_na_item = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("127.0.0.1", "Antigone"),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Schema] = "Core")),
+				    Core_dim_national_accounts = #"Filtered Rows"{[Schema="Core",Item="dim_national_accounts"]}[Data],
+				    #"Sorted Rows" = Table.Sort(Core_dim_national_accounts,{{"na_item", Order.Ascending}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Sorted Rows", {"na_item"}, mapping_in_out, {"level_2"}, "mapping_in_out", JoinKind.LeftOuter),
+				    #"Expanded mapping_in_out" = Table.ExpandTableColumn(#"Merged Queries", "mapping_in_out", {"level_1"}, {"level_1"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded mapping_in_out",{{"level_1", "in_out"}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns", {"na_item"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -7,7 +7,43 @@ ismene:
       user: believer
       password: ~T;^n=:/>O\A64HGEYq,
       dbname: Antigone
-      schema: "public"  # Fallback schema
+      schema: "public"
+      port: 5432
+      threads: 4
+      keepalives_idle: 0
+      search_path: 'Staging,Core,Mart'
+
+    test:
+      type: postgres
+      host: localhost
+      user: believer
+      password: ~T;^n=:/>O\A64HGEYq,
+      dbname: Ismene
+      schema: "public"
+      port: 5432
+      threads: 4
+      keepalives_idle: 0
+      search_path: 'Staging,Core,Mart'
+
+    prod:
+      type: postgres
+      host: localhost
+      user: believer
+      password: ~T;^n=:/>O\A64HGEYq,
+      dbname: Eteocles
+      schema: "public"
+      port: 5432
+      threads: 4
+      keepalives_idle: 0
+      search_path: 'Staging,Core,Mart'
+
+    deployment:
+      type: postgres
+      host: localhost
+      user: believer
+      password: ~T;^n=:/>O\A64HGEYq,
+      dbname: Polyneices
+      schema: "public"
       port: 5432
       threads: 4
       keepalives_idle: 0

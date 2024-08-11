@@ -154,7 +154,3 @@ Automation is achieved using Power BI
 - **Approval Workflow**: Once the pipeline is functional, approval steps will be implemented to ensure that each stage is reached only after passing quality checks.
 
 This workflow helps us maintain data security and integrity while ensuring a seamless development and deployment process.
-
----
-
-This updated `README.md` should provide clear guidance and context about the project, including the handling of sensitive data and the structured development pipeline.

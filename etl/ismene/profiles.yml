@@ -5,7 +5,7 @@ ismene:
       type: postgres
       host: localhost
       user: believer
-      password: ~T;^n=:/>O\A64HGEYq,
+      password: "{{ env_var('DBT_PASSWORD') }}"
       dbname: Antigone
       schema: "public"
       port: 5432
@@ -16,8 +16,8 @@ ismene:
     test:
       type: postgres
       host: localhost
-      user: believer
-      password: ~T;^n=:/>O\A64HGEYq,
+      user: "{{ env_var('DB_USER') }}"
+      password: "{{ env_var('DB_PASSWORD') }}"
       dbname: Ismene
       schema: "public"
       port: 5432
@@ -28,8 +28,8 @@ ismene:
     prod:
       type: postgres
       host: localhost
-      user: believer
-      password: ~T;^n=:/>O\A64HGEYq,
+      user: "{{ env_var('DB_USER') }}"
+      password: "{{ env_var('DB_PASSWORD') }}"
       dbname: Eteocles
       schema: "public"
       port: 5432
@@ -40,8 +40,8 @@ ismene:
     deployment:
       type: postgres
       host: localhost
-      user: believer
-      password: ~T;^n=:/>O\A64HGEYq,
+      user: "{{ env_var('DB_USER') }}"
+      password: "{{ env_var('DB_PASSWORD') }}"
       dbname: Polyneices
       schema: "public"
       port: 5432

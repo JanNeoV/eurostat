@@ -12,3 +12,18 @@ sources:
       - name: geo_country_mapping
       - name: government_sectors
       - name: national_accounts_indicator
+      - name: divorces_by_duration_of_marriage_reached_during_the_year
+      - name: first_marriage_rates_by_age_and_sex
+      - name: divorces_by_citizenship_of_wife_and_husband
+      - name: first_time_marrying_persons_by_age_and_sex
+      - name: divorce_indicators
+      - name: self_employment_by_sex_industry_age_raw
+      - name: marriage_indicators
+      - name: marriage_by_sex_and_previous_marital_status
+      - name: marriages_by_previous_legal_union_status_of_bride_and_groom
+      - name: marriages_by_citizenship_of_bride_and_groom
+      - name: marriages_by_country_of_birth_of_bride_and_groom
+      - name: divorces_by_country_of_birth_of_wife_and_husband
+      - name: mean_age_at_first_marriage_by_sex
+      - name: crude_divorce_rate
+      - name: crude_marriage_rate

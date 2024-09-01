@@ -1,11 +1,12 @@
-    SELECT
-        age,
-        geo,
-        sex,
-        wstatus,
-        nace_r2 AS token,
-        SPLIT_PART(time_period, '-', 1)::INT AS time_period,
-        SUM(obs_value) AS kpi_value,
-        'industry' AS category
+    SELECT 
+    DISTINCT geo
+    , sex,obs_value, age
+        --obs_value, geo
     FROM
-        {{ source('Source', 'self_employment_by_industry_raw') }} WHERE obs_value IS NOT NULL GROUP BY age, geo, sex, wstatus, token, time_period, category
+        {{ source('Source', 'first_marriage_rates_by_age_and_sex') }}
+        WHERE time_period = 2010
+        AND geo = 'DE_TOT'
+        --AND geo = 'DE'
+        ORDER BY obs_value DESC
+        --AND age = 'Y35-39' OR age = 'Y30-34'
+
